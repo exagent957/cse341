@@ -1,0 +1,58 @@
+// LOCALHOST Get all
+### 
+GET http://localhost:8080/contacts
+
+// LOCALHOST Get specific ones
+###
+GET http://localhost:8080/contacts/644b153f6adc3b1dfb8c9b2f
+
+###
+GET http://localhost:8080/contacts/644b153f6adc3b1dfb8c9b30 
+
+###
+GET http://localhost:8080/contacts/644b153f6adc3b1dfb8c9b31 
+
+// Create new contact
+###
+POST http://localhost:8080/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Marc",
+    "lastName": "Williamson",
+    "email": "marc9@marc.com",
+    "favoriteColor": "Blue",
+    "birthday": "05/11/72"
+}
+
+// Update contact
+###
+PUT http://localhost:8080/contacts/64545c5ac057713bb8e1eb52 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Marc",
+    "lastName": "Williamson",
+    "email": "marc9@marc.com",
+    "favoriteColor": "green",
+    "birthday": "05/11/72"
+}
+
+// Delete contact
+###
+DELETE http://localhost:8080/contacts/64545c5ac057713bb8e1eb52
+
+
+// Render
+### 
+GET https://l02-6qs8.onrender.com/contacts 
+
+### 
+GET https://l02-6qs8.onrender.com/contacts/644b153f6adc3b1dfb8c9b2f
+
+### 
+GET https://l02-6qs8.onrender.com/contacts/644b153f6adc3b1dfb8c9b30
+
+###
+GET https://l02-6qs8.onrender.com/contacts/644b153f6adc3b1dfb8c9b31
+
