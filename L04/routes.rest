@@ -26,7 +26,6 @@ Content-Type: application/json
     "shoeSize": 10,
     "language": "English",
     "member": "True"
-
 }
 
 // Update contact

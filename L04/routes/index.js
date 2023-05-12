@@ -10,7 +10,7 @@ router.use(
   '/',
   (docData = (req, res) => {
     let docData = {
-      documentationURL: 'localhost:8080/api-docs',
+      documentationURL: 'https://l04.onrender.com//api-docs',
     };
     res.send(docData);
   })

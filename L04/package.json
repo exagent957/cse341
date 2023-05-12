@@ -1,7 +1,7 @@
 {
   "name": "l03-personal",
   "version": "1.0.0",
-  "description": "L02 Personal assignment - connect API to Mongodb",
+  "description": "L04 Personal assignment - API documentation via Swagger",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
