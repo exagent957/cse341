@@ -1,0 +1,104 @@
+// LOCALHOST Get all
+### 
+GET http://localhost:8080/contacts
+
+// LOCALHOST Get specific ones
+###
+GET http://localhost:8080/contacts/644b153f6adc3b1dfb8c9b2f
+
+###
+GET http://localhost:8080/contacts/644b153f6adc3b1dfb8c9b30 
+
+###
+GET http://localhost:8080/contacts/644b153f6adc3b1dfb8c9b31 
+
+// Create new contact
+###
+POST http://localhost:8080/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Marc",
+    "lastName": "Williamson",
+    "email": "marc9@marc.com",
+    "favoriteColor": "Blue",
+    "birthday": "05/11/72",
+    "shoeSize": 10,
+    "language": "English",
+    "member": "True"
+
+}
+
+// Update contact
+###
+PUT http://localhost:8080/contacts/6455667dba6f64df53b8efe5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Marco",
+    "lastName": "Williamson",
+    "email": "marc9@marc.com",
+    "favoriteColor": "green",
+    "birthday": "05/11/72",
+    "shoeSize": 10,
+    "language": "English",
+    "member": "True"
+}
+
+// Delete contact
+###
+DELETE http://localhost:8080/contacts/645e6630cb12621bc1e384c3
+
+
+// Render
+// Get All
+### 
+GET https://l02-6qs8.onrender.com/contacts 
+
+// GET SPECIFIC
+### 
+GET https://l02-6qs8.onrender.com/contacts/644b153f6adc3b1dfb8c9b2f
+
+// GET SPECIFIC
+### 
+GET https://l02-6qs8.onrender.com/contacts/644b153f6adc3b1dfb8c9b30
+
+// GET SPECIFIC
+###
+GET https://l02-6qs8.onrender.com/contacts/644b153f6adc3b1dfb8c9b31
+
+// Create new contact
+###
+POST https://l03.onrender.com/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Marc",
+    "lastName": "Williamson",
+    "email": "marc9@marc.com",
+    "favoriteColor": "Blue",
+    "birthday": "05/11/72",
+    "shoeSize": 10,
+    "language": "English",
+    "member": "True"
+}
+
+// Update contact
+###
+PUT https://l03.onrender.com/contacts/64556728f04baa4ef2721866 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Marco",
+    "lastName": "Williamson",
+    "email": "marc6@marc.com",
+    "favoriteColor": "green",
+    "birthday": "05/11/72",
+    "shoeSize": 10,
+    "language": "English",
+    "member": "True"
+}
+
+// Delete contact
+###
+DELETE https://l03.onrender.com/contacts/64556728f04baa4ef2721866

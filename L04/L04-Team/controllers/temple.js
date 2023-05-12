@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const db = require('../models');
 const Temple = db.temples;
 
@@ -42,17 +43,7 @@ exports.findAll = (req, res) => {
 */
   console.log(req.header('apiKey'));
   if (req.header('apiKey') === apiKey) {
-    Temple.find(
-      // {},
-      // {
-      //   temple_id: 1,
-      //   name: 1,
-      //   location: 1,
-      //   dedicated: 1,
-      //   additionalInfo: 1,
-      //   _id: 0,
-      // }
-    )
+    Temple.find()
       .then((data) => {
         res.send(data);
       })

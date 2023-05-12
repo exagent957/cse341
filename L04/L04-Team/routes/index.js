@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const routes = require('express').Router();
 const temple = require('./temple');
 
