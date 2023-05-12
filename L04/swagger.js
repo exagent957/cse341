@@ -6,7 +6,7 @@ const doc = {
     description: 'CSE341 Web Services L04, Marc Williamson'
   },
   host: 'https://l04.onrender.com/',
-  schemes: ['http']
+  schemes: ['https']
 }
 const outputFile = './swagger.json';
 const endpointsFile = ['./routes/index.js'];

@@ -8,7 +8,7 @@
   "host": "https://l04.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
