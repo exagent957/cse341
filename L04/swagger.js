@@ -5,7 +5,7 @@ const doc = {
     title: 'Contacts API',
     description: 'CSE341 Web Services L04, Marc Williamson'
   },
-  host: '/l04.onrender.com/',
+  host: 'l04.onrender.com/',
   schemes: ['https']
 }
 const outputFile = './swagger.json';
