@@ -1,0 +1,164 @@
+[
+  {
+    "puppyTempName": "Maria",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "yellow",
+    "puppyCollar": "pink",
+    "puppyAKC": "SS18405901",
+    "puppyNewName": "Coconut"
+  },
+  {
+    "puppyTempName": "Marta",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "yellow",
+    "puppyCollar": "orange",
+    "puppyAKC": "SS18405902",
+    "puppyNewName": "Lola"
+  },
+  {
+    "puppyTempName": "Maya",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "chocolate",
+    "puppyCollar": "purple",
+    "puppyAKC": "SS18405903",
+    "puppyNewName": "Hope"
+  },
+  {
+    "puppyTempName": "Miguel",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "M",
+    "puppyColor": "yellow",
+    "puppyCollar": "light green",
+    "puppyAKC": "SS18405904",
+    "puppyNewName": "Cody"
+  },
+  {
+    "puppyTempName": "Mario",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "M",
+    "puppyColor": "yellow",
+    "puppyCollar": "yellow",
+    "puppyAKC": "SS18405905",
+    "puppyNewName": "Barley"
+  },
+  {
+    "puppyTempName": "Marguerita",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "yellow",
+    "puppyCollar": "light purple",
+    "puppyAKC": "SS18405906",
+    "puppyNewName": "Luna"
+  },
+  {
+    "puppyTempName": "Mateo",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "M",
+    "puppyColor": "yellow",
+    "puppyCollar": "dark blue",
+    "puppyAKC": "SS18405907",
+    "puppyNewName": "Chief"
+  },
+  {
+    "puppyTempName": "Macarena",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "black",
+    "puppyCollar": "light pink",
+    "puppyAKC": "SS18405908",
+    "puppyNewName": "Opal"
+  },
+  {
+    "puppyTempName": "Mara",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "chocolate",
+    "puppyCollar": "red",
+    "puppyAKC": "SS18405909",
+    "puppyNewName": "Bella"
+  },
+  {
+    "puppyTempName": "Milena",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "F",
+    "puppyColor": "yellow",
+    "puppyCollar": "light blue",
+    "puppyAKC": "SS18405910",
+    "puppyNewName": "Heide"
+  },
+  {
+    "puppyTempName": "Marco",
+    "puppyDOB": "2020-05-05",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "light gray",
+    "puppyAKC": "SS18405911",
+    "puppyNewName": "Cinco"
+  },
+  {
+    "puppyTempName": "August",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "blue",
+    "puppyAKC": "SS28210101",
+    "puppyNewName": "August"
+  },
+  {
+    "puppyTempName": "Axle",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "M",
+    "puppyColor": "yellow",
+    "puppyCollar": "yellow",
+    "puppyAKC": "SS28210102",
+    "puppyNewName": "Axel"
+  },
+  {
+    "puppyTempName": "Apollo",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "M",
+    "puppyColor": "black",
+    "puppyCollar": "orange",
+    "puppyAKC": "SS28210103",
+    "puppyNewName": "Apollo"
+  },
+  {
+    "puppyTempName": "Atticus",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "M",
+    "puppyColor": "yellow",
+    "puppyCollar": "purple",
+    "puppyAKC": "SS28210104",
+    "puppyNewName": "Baxter"
+  },
+  {
+    "puppyTempName": "Aidan",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "M",
+    "puppyColor": "yellow",
+    "puppyCollar": "red",
+    "puppyAKC": "SS28210105",
+    "puppyNewName": "Odin"
+  },
+  {
+    "puppyTempName": "Astrid",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "F",
+    "puppyColor": "black",
+    "puppyCollar": "pink",
+    "puppyAKC": "SS28210106",
+    "puppyNewName": "Wynonna"
+  },
+  {
+    "puppyTempName": "Atlas",
+    "puppyDOB": "2021-08-06",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "green",
+    "puppyAKC": "SS28210107",
+    "puppyNewName": "Larry"
+  }
+]

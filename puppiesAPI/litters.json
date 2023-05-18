@@ -1,0 +1,47 @@
+[
+  {
+    "litterAKC": "SS184059",
+    "sireName": "Jacob",
+    "damName": "Piper",
+    "litterConceived": "2020-03-05",
+    "litterDelivered": "2020-05-05",
+    "femalesBorn": 7,
+    "femalesSurvived": 7,
+    "malesBorn": 4,
+    "malesSurvived": 4,
+    "puppiesYellow": 7,
+    "puppiesChocolate": 3,
+    "puppiesBlack": 1,
+    "litterNote": "A healthy litter. No issues."
+  },
+  {
+    "litterAKC": "SS282101",
+    "sireName": "Jacob",
+    "damName": "Piper",
+    "litterConceived": "2021-06-06",
+    "litterDelivered": "2021-08-08",
+    "femalesBorn": 1,
+    "femalesSurvived": 1,
+    "malesBorn": 8,
+    "malesSurvived": 6,
+    "puppiesYellow": 3,
+    "puppiesChocolate": 2,
+    "puppiesBlack": 2,
+    "litterNote": "Sadly we had 2 still-born chocolate males."
+  },
+  {
+    "litterAKC": "Pending",
+    "sireName": "Jacob",
+    "damName": "Oakley",
+    "litterConceived": "2023-05-14",
+    "litterDelivered": "expecting 2023-07-10",
+    "femalesBorn": 0,
+    "femalesSurvived": 0,
+    "malesBorn": 0,
+    "malesSurvived": 0,
+    "puppiesYellow": 0,
+    "puppiesChocolate": 0,
+    "puppiesBlack": 0,
+    "litterNote": ""
+  }
+]

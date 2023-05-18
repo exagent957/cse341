@@ -1,0 +1,86 @@
+// Get puppies
+### 
+GET http://localhost:8080/puppies
+
+// Get specific puppy
+###
+GET http://localhost:8080/puppies/646503dd6d2238deabe1bbf1
+
+// Create new puppy
+###
+POST http://localhost:8080/puppies HTTP/1.1
+Content-Type: application/json
+
+{
+    "puppyTempName": "New Puppy Test",
+    "puppyDOB": "2023-05-20",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "orange",
+    "puppyAKC": "Resigtration #",
+    "puppyNewName": "My New Name"
+}
+
+// Update puppy
+###
+PUT http://localhost:8080/puppies/6455667dba6f64df53b8efe5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "puppyTempName": "New Puppy Test",
+    "puppyDOB": "2023-05-20",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "orange",
+    "puppyAKC": "orange",
+    "puppyNewName": "My New Name"
+}
+
+// Delete puppy
+###
+DELETE http://localhost:8080/puppies/64651f370aa3d4c04518ae88
+
+
+// Render
+// Get puppies
+### 
+GET http://render/puppies
+
+// Get specific puppy
+###
+GET http://render/puppies/644b153f6adc3b1dfb8c9b2f
+
+// Create new puppy
+###
+POST http://render/puppies HTTP/1.1
+Content-Type: application/json
+
+{
+    "puppyTempName": "New Puppy Test",
+    "puppyDOB": "2023-05-20",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "orange",
+    "puppyAKC": "orange",
+    "puppyNewName": "My New Name"
+}
+
+// Update puppy
+###
+PUT http://render/puppies/6455667dba6f64df53b8efe5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "puppyTempName": "New Puppy Test",
+    "puppyDOB": "2023-05-20",
+    "puppySex": "M",
+    "puppyColor": "chocolate",
+    "puppyCollar": "orange",
+    "puppyAKC": "orange",
+    "puppyNewName": "My New Name"
+}
+
+// Delete puppy
+###
+DELETE http://render/puppies/645e6630cb12621bc1e384c3
+
