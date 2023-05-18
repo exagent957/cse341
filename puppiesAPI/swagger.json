@@ -5,10 +5,10 @@
     "description": "CSE341 Web Services Project 2, Marc Williamson",
     "version": "1.0.0"
   },
-  "host": "localhost:8080/",
+  "host": "puppies-api-ek0y.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
