@@ -5,10 +5,8 @@ const doc = {
     title: 'Puppies API',
     description: 'CSE341 Web Services Project 2, Marc Williamson'
   },
-  //host: 'l04.onrender.com/',
-  host: 'localhost:8080/',
-  //schemes: ['https']
-  schemes: ['http']
+  host: 'puppies-api-ek0y.onrender.com/',
+  schemes: ['https']
 }
 const outputFile = './swagger.json';
 const endpointsFile = ['./routes/index.js'];
