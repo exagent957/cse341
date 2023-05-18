@@ -5,10 +5,8 @@ const doc = {
     title: 'Puppies API',
     description: 'CSE341 Web Services Project 2, Marc Williamson. A collection of AKC registered Labrador puppies and their litters from JW Farm, Hartselle, AL'
   },
-  // host: 'puppies-api-ek0y.onrender.com',
-  // schemes: ['https']
-  host:  'localhost:8080',
-  schemes: ['http']
+  host: 'puppies-api-ek0y.onrender.com',
+  schemes: ['https']
 }
 const outputFile = './swagger.json';
 const endpointsFile = ['./routes/index.js'];
