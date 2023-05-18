@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     title: 'Puppies API',
-    description: 'CSE341 Web Services Project 2, Marc Williamson'
+    description: 'CSE341 Web Services Project 2, Marc Williamson. A collection of ACK registered puppies and their litters from JW Farm, Hartselle, AL'
   },
   host: 'puppies-api-ek0y.onrender.com',
   schemes: ['https']
