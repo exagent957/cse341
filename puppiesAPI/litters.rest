@@ -4,31 +4,11 @@ GET http://localhost:8080/litters
 
 // Get specific litter
 ###
-GET http://localhost:8080/litters/646508676d2238deabe1bc03
+GET http://localhost:8080/litters/646508676d2238deabe1bc04
 
 // Create new litter
 ###
 POST http://localhost:8080/litters HTTP/1.1
-Content-Type: application/json
-
-{
-    "litterAKC": "Test AKC Registration",
-    "sireName": "Jacob",
-    "damName": "Oakley",
-    "litterConceived": "2023-05-14",
-    "litterDelivered": "2023-07-09",
-    "femalesBorn": 5,
-    "femalesSurvived": 5,
-    "malesBorn": 5,
-    "malesSurvived": 5,
-    "puppiesYellow": 3,
-    "puppiesChocolate": 3,
-    "puppiesBlack": 4
-}
-
-// Update litter
-###
-PUT http://localhost:8080/litters/6465209cab54b68c02e94eba HTTP/1.1
 Content-Type: application/json
 
 {
@@ -46,9 +26,29 @@ Content-Type: application/json
     "puppiesBlack": 4
 }
 
+// Update litter
+###
+PUT http://localhost:8080/litters/646d004e62c7857fd0810a4c HTTP/1.1
+Content-Type: application/json
+
+{
+    "litterAKC": "AKC Registration",
+    "sireName": "Jacob",
+    "damName": "Hazel",
+    "litterConceived": "2023-05-14",
+    "litterDelivered": "2023-07-09",
+    "femalesBorn": 5,
+    "femalesSurvived": 5,
+    "malesBorn": 5,
+    "malesSurvived": 5,
+    "puppiesYellow": 3,
+    "puppiesChocolate": 3,
+    "puppiesBlack": 4
+}
+
 // Delete contact
 ###
-DELETE http://localhost:8080/litters/646508676d2238deabe1bc05
+DELETE http://localhost:8080/litters/646d004e62c7857fd0810a4c
 
 
 // Render

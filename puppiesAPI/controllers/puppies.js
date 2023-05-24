@@ -1,65 +1,48 @@
 /**** CSE341 Web Services - Project 2 - Puppies API ****//*eslint-disable*/ 
 const { application } = require('express');
-const mongodb = require('../db/connect');
+const mongoose = require('../db/connect');
 const { json } = require('body-parser');
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('../utils/appError');
 const ObjectId = require('mongodb').ObjectId;
+const Puppy = require('./../models/puppy');
 
-const getAllPuppies = async (req, res) => {
+const getAllPuppies = catchAsync(async (req, res) => {
   /*
   #swagger.description = 'READ all puppies.'
 */
-  const result = await mongodb
-    .getDb()
-    .db()
-    .collection('puppies')
-    .find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  })
-  .catch((err) => {
-    res.status(500).send({
-      message:
-        err.message || 'Unexpected server error occurred while retrieving this request'
-    });
+  const puppies = await Puppy.find();
+  res.status(200).json({
+    status: 'success',
+    results: puppies.length,
+    data: { puppies }
   });
-};
+});
 
-const getPuppyById = async (req, res) => {
+const getPuppyById = catchAsync(async (req, res, next) => {
   /*
   #swagger.description = 'READ a specific puppy by id.'
 */
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Use a valid id to find desired puppy.')
+  }
   const puppyId = new ObjectId(req.params.id);
-  const result = await mongodb
-    .getDb()
-    .db()
-    .collection('puppies')
-    .find({ _id: puppyId });
-  result.toArray().then((data) => {
-    //   if (!data){
-       //   res.status(404).send({ message: `Contact with id ${userId} not found`});
-     // return;
-    //   } else {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(data[0]);
-      })
-  .catch((err) => {
-        res.status(500).send({
-          message:
-          err.message || `Error locating contact with id ${puppyId}`
-        });
-      });
-};
+  const puppy = await Puppy.findById(puppyId);
+  res.status(200).json({
+    status: 'success',
+    data: { puppy }
+  });
+});
 
-const addPuppy = async(req, res) => {
+const addPuppy = catchAsync(async (req, res, next) => {
     /*
   #swagger.description = 'CREATE a new puppy.'
 */
   if (!req.body.puppyTempName) {
-    res.status(400).send({ message: 'Content can not be empty!' });
+    res.status(400).send({ message: 'Content cannot be empty!' });
     return;
   }
-  const newPuppy = {
+  const puppy = new Puppy({
     puppyTempName: req.body.puppyTempName,
     puppyDOB: req.body.puppyDOB,
     puppySex: req.body.puppySex,
@@ -67,24 +50,21 @@ const addPuppy = async(req, res) => {
     puppyCollar: req.body.puppyCollar,
     puppyAKC: req.body.puppyAKC,
     puppyNewName: req.body.puppyNewName
-  };
-  console.log(newPuppy);
-  const response = await mongodb
-  .getDb()
-  .db()
-  .collection('puppies')
-  .insertOne(newPuppy);
-  if (response.acknowledged){
-    res.status(201).json(response);
-  } else {
-    res.status(500).json(response.error || "An error occurred creating the puppy.");
-  }
-}
+  });
+  const newPuppy = await Puppy.create(puppy);
+  res.status(201).json({
+    status: 'success',
+    data: { puppy: newPuppy }
+  });
+});
 
-const updatePuppy = async (req, res) => {
+const updatePuppy = catchAsync(async (req, res) => {
     /*
   #swagger.description = 'UPDATE a specific puppy by id.'
 */
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Use a valid id to update desired puppy.')
+  }
   const puppyId = new ObjectId(req.params.id);
   const changePuppy = {
     puppyTempName: req.body.puppyTempName,
@@ -95,37 +75,30 @@ const updatePuppy = async (req, res) => {
     puppyAKC: req.body.puppyAKC,
     puppyNewName: req.body.puppyNewName
   };
-  console.log(changePuppy);
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection('puppies')
-    .updateOne({ _id: puppyId}, {$set: changePuppy});
-  if (response.modifiedCount > 0){
-    console.log("Puppy updated.");
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || "An error occurred updating the contact.")
-  }
-};
+  const puppy = await Puppy.findByIdAndUpdate(puppyId, changePuppy, {
+    new: true,
+    runValidators: true
+  });
+  res.status(200).json({
+    status: 'success',
+    data: { puppy }
+  });
+});
 
-const deletePuppy = async (req, res, next) => {
+const deletePuppy = catchAsync(async (req, res, next) => {
     /*
-  #swagger.description = 'DELETE a specific puppy by id.'
+  #swagger.description = 'DELETE a puppy by id.'
 */
-  const puppyId = new ObjectId(req.params.id);
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection('puppies')
-    .deleteOne({ _id: puppyId });
-  if (response.deletedCount > 0){
-    console.log("Puppy deleted.");
-    res.status(200).send();
-  } else {
-    res.status(500).json(response.error || "An error occurred deleting the puppy.")
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Use a valid id to delete desired puppy.')
   }
-};
+  const puppyId = new ObjectId(req.params.id);
+  await Puppy.findByIdAndDelete(puppyId);
+  res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
 
 module.exports = { 
   getAllPuppies, 

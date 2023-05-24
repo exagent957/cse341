@@ -4,7 +4,7 @@ GET http://localhost:8080/puppies
 
 // Get specific puppy
 ###
-GET http://localhost:8080/puppies/646503dd6d2238deabe1bbf1
+GET http://localhost:8080/puppies/646503dd6d2238deabe1bbf9
 
 // Create new puppy
 ###
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 // Update puppy
 ###
-PUT http://localhost:8080/puppies/6455667dba6f64df53b8efe5 HTTP/1.1
+PUT http://localhost:8080/puppies/646ce02a5376a53e6de09a29 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -32,13 +32,13 @@ Content-Type: application/json
     "puppySex": "M",
     "puppyColor": "chocolate",
     "puppyCollar": "orange",
-    "puppyAKC": "orange",
+    "puppyAKC": "AKC #",
     "puppyNewName": "My New Name"
 }
 
 // Delete puppy
 ###
-DELETE http://localhost:8080/puppies/64651f370aa3d4c04518ae88
+DELETE http://localhost:8080/puppies/646ce02a5376a53e6de09a29
 
 
 // Render
@@ -48,7 +48,7 @@ GET http://render/puppies
 
 // Get specific puppy
 ###
-GET http://render/puppies/644b153f6adc3b1dfb8c9b2f
+GET http://render/puppies/646cf4789d5927e53ed0b1ed
 
 // Create new puppy
 ###
@@ -82,5 +82,5 @@ Content-Type: application/json
 
 // Delete puppy
 ###
-DELETE http://render/puppies/645e6630cb12621bc1e384c3
+DELETE http://render/puppies/646cf4789d5927e53ed0b1ed
 

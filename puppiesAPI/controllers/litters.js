@@ -1,65 +1,49 @@
 /**** CSE341 Web Services - Project 2 - Puppies API ****//*eslint-disable*/ 
 const { application } = require('express');
-const mongodb = require('../db/connect');
+const mongoose = require('../db/connect');
 const { json } = require('body-parser');
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('../utils/appError');
 const ObjectId = require('mongodb').ObjectId;
+const Litter = require('./../models/litter');
 
-const getAllLitters = async (req, res) => {
+const getAllLitters = catchAsync(async (req, res, next) => {
   /*
   #swagger.description = 'READ all litters.'
 */
-  const result = await mongodb
-    .getDb()
-    .db()
-    .collection('litters')
-    .find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  })
-  .catch((err) => {
-    res.status(500).send({
-      message:
-        err.message || 'Unexpected server error occurred while retrieving this request'
-    });
+  const litters = await Litter.find();
+  res.status(200).json({
+    status: 'success',
+    results: litters.length,
+    data: { litters }
   });
-};
+});
 
-const getLitterById = async (req, res) => {
+const getLitterById = catchAsync(async (req, res, next) => {
   /*
   #swagger.description = 'READ a specific litter by id.'
 */
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Use a valid litter id to find desired litter.')
+  }
   const litterId = new ObjectId(req.params.id);
-  const result = await mongodb
-    .getDb()
-    .db()
-    .collection('litters')
-    .find({ _id: litterId });
-  result.toArray().then((data) => {
-    //   if (!data){
-       //   res.status(404).send({ message: `Contact with id ${userId} not found`});
-     // return;
-    //   } else {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(data[0]);
-      })
-  .catch((err) => {
-        res.status(500).send({
-          message:
-          err.message || `Error locating contact with id ${litterId}`
-        });
-      });
-};
+  const litter = await Litter.findById(litterId);
+  res.status(200).json({
+    status: 'success',
+    data: { litter }
+  });
+});
 
-const addLitter = async(req, res) => {
+
+const addLitter = catchAsync(async (req, res, next) => {
     /*
   #swagger.description = 'CREATE a new litter.'
 */
   if (!req.body.litterAKC) {
-    res.status(400).send({ message: 'Content can not be empty!' });
+    res.status(400).send({ message: 'Content cannot be empty!' });
     return;
   }
-  const newLitter = {
+  const litter = new Litter({
     litterAKC: req.body.litterAKC,
     sireName: req.body.sireName,
     damName: req.body.damName,
@@ -72,24 +56,21 @@ const addLitter = async(req, res) => {
     puppiesYellow: req.body.puppiesYellow,
     puppiesChocolate: req.body.puppiesChocolate,
     puppiesBlack: req.body.puppiesBlack
-  };
-  console.log(newLitter);
-  const response = await mongodb
-  .getDb()
-  .db()
-  .collection('litters')
-  .insertOne(newLitter);
-  if (response.acknowledged){
-    res.status(201).json(response);
-  } else {
-    res.status(500).json(response.error || "An error occurred creating the litter.");
-  }
-}
+  });
+  const newLitter = await Litter.create(litter);
+  res.status(201).json({
+    status: 'success',
+    data: { litter: newLitter }
+  });
+});
 
-const updateLitter = async (req, res) => {
+const updateLitter = catchAsync(async (req, res, next) => {
     /*
   #swagger.description = 'UPDATE a specific litter by id.'
 */
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Use a valid litter id to update desired litter.')
+  }
   const litterId = new ObjectId(req.params.id);
   const changeLitter = {
     litterAKC: req.body.litterAKC,
@@ -105,37 +86,30 @@ const updateLitter = async (req, res) => {
     puppiesChocolate: req.body.puppiesChocolate,
     puppiesBlack: req.body.puppiesBlack
   };
-  console.log(changeLitter);
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection('litters')
-    .updateOne({ _id: litterId}, {$set: changeLitter});
-  if (response.modifiedCount > 0){
-    console.log("Litter updated.");
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || "An error occurred updating the contact.")
-  }
-};
+  const litter = await Litter.findByIdAndUpdate(litterId, changeLitter, {
+    new: true,
+    runValidators: true
+  });
+  res.status(200).json({
+    status: 'success',
+    data: { litter }
+  });
+});
 
-const deleteLitter = async (req, res, next) => {
+const deleteLitter = catchAsync(async (req, res, next) => {
     /*
   #swagger.description = 'DELETE a specific litter by id.'
 */
-  const litterId = new ObjectId(req.params.id);
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection('litters')
-    .deleteOne({ _id: litterId });
-  if (response.deletedCount > 0){
-    console.log("Litter deleted.");
-    res.status(200).send();
-  } else {
-    res.status(500).json(response.error || "An error occurred deleting the puppy.")
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Use a valid litter id to delete desired litter.')
   }
-};
+  const litterId = new ObjectId(req.params.id);
+  await Litter.findByIdAndDelete(litterId);
+  res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
 
 module.exports = { 
   getAllLitters, 
