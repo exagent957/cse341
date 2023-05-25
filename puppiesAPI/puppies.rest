@@ -61,7 +61,7 @@ Content-Type: application/json
     "puppySex": "M",
     "puppyColor": "chocolate",
     "puppyCollar": "orange",
-    "puppyAKC": "orange",
+    "puppyAKC": "SS1234",
     "puppyNewName": "My New Name"
 }
 

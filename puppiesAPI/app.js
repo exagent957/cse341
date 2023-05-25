@@ -33,6 +33,7 @@ app.use((req, res, next) => {
   })
   .use('', require('./routes'));
 
+//Error handling
 app.all('*', (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl} on this server.`, 404));
 });
