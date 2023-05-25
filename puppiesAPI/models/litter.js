@@ -1,6 +1,6 @@
 /*eslint-disable*/
 const mongoose = require('mongoose');
-
+mongoose.Schema.Types.String.set('trim', true);
 const litterSchema = new mongoose.Schema({
   litterAKC: {
     type: String,
@@ -33,9 +33,9 @@ const litterSchema = new mongoose.Schema({
     max: 20
   },
   femalesSurvived: {
-  type: Number,
-  required: false,
-  max: 20
+    type: Number,
+    required: false,
+    max: 20
   },
   malesBorn: {
     type: Number,
@@ -44,24 +44,29 @@ const litterSchema = new mongoose.Schema({
     max: 20
   },
   malesSurvived: {
-  type: Number,
-  required: false,
-  max: 20
+    type: Number,
+    required: false,
+    max: 20
   },
   puppiesChocolate: {
-  type: Number,
-  required: [true, '# of chocolate puppies required.'],
-  max: 20
+    type: Number,
+    required: [true, '# of chocolate puppies required.'],
+    max: 20
   },
   puppiesYellow: {
-  type: Number,
-  required: [true, '# of yellow puppies required.'],
-  max: 20
+    type: Number,
+    required: [true, '# of yellow puppies required.'],
+    max: 20
   },
   puppiesBlack: {
-  type: Number,
-  required: [true, '# of black puppies required.'],
-  max: 20
+    type: Number,
+    required: [true, '# of black puppies required.'],
+    max: 20
+  },
+  litterNote: {
+    type: String,
+    required: false,
+    maxLength: 255
   }
 });
 

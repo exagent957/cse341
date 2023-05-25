@@ -12,7 +12,7 @@ POST http://localhost:8080/puppies HTTP/1.1
 Content-Type: application/json
 
 {
-    "puppyTempName": "New Puppy Test",
+    "puppyTempName": "$New Puppy Test",
     "puppyDOB": "2023-05-20",
     "puppySex": "M",
     "puppyColor": "chocolate",
@@ -38,25 +38,25 @@ Content-Type: application/json
 
 // Delete puppy
 ###
-DELETE http://localhost:8080/puppies/646ce02a5376a53e6de09a29
+DELETE http://localhost:8080/puppies/646f453d2c2b774ed28d6062
 
 
 // Render
 // Get puppies
 ### 
-GET http://render/puppies
+GET https://puppies-api-ek0y.onrender.com/puppies
 
 // Get specific puppy
 ###
-GET http://render/puppies/646cf4789d5927e53ed0b1ed
+GET https://puppies-api-ek0y.onrender.com/puppies/646cf4789d5927e53ed0b1ed
 
 // Create new puppy
 ###
-POST http://render/puppies HTTP/1.1
+POST https://puppies-api-ek0y.onrender.com/puppies HTTP/1.1
 Content-Type: application/json
 
 {
-    "puppyTempName": "New Puppy Test",
+    "puppyTempName": "Puppy Test",
     "puppyDOB": "2023-05-20",
     "puppySex": "M",
     "puppyColor": "chocolate",
@@ -67,7 +67,7 @@ Content-Type: application/json
 
 // Update puppy
 ###
-PUT http://render/puppies/6455667dba6f64df53b8efe5 HTTP/1.1
+PUThttps://puppies-api-ek0y.onrender.com/puppies/6455667dba6f64df53b8efe5 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -82,5 +82,4 @@ Content-Type: application/json
 
 // Delete puppy
 ###
-DELETE http://render/puppies/646cf4789d5927e53ed0b1ed
-
+DELETE https://puppies-api-ek0y.onrender.com/puppies/646f447fe225c3063bb6cae1

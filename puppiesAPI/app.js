@@ -2,6 +2,9 @@
 /*CSE341 Web Services - Project 2 - Puppies API*/
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 const connect = require('./db/connect');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -10,8 +13,17 @@ const app = express();
 
 
 app
-  .use(bodyParser.json())
-  .use((req, res, next) => {
+  .use(bodyParser.json());
+
+//Data sanitization. Protect against NoSQL query injection
+app.use(mongoSanitize());
+//Data sanitization. Protect against XSS
+app.use(xss());
+//Prevent parameter pollution
+app.use(hpp());
+
+
+app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
       'Access-Control-Allow-Headers', 
@@ -27,18 +39,11 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
+
 connect.connectToMongo();
 app.listen(port);
 console.log(`Listening on ${port}`);
 
-// mongodb.initDb((err, mongodb) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     app.listen(port);
-//     console.log(`Connected to DB and listening on ${port}`);
-//   }
-// });
 
 
 
