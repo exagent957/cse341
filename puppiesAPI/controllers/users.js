@@ -4,7 +4,7 @@ const { json } = require('body-parser');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
 const ObjectId = require('mongodb').ObjectId;
-const User = require('./../models/user');
+const User = require('./../models/userModel');
 
 const getAllUsers = catchAsync(async (req, res, next) => {
   /*
