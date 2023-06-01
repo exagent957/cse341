@@ -8,14 +8,14 @@ router.use('/', require('./swagger'));
 router.use('/puppies', require('./puppies'));
 router.use('/litters', require('./litters'));
 router.use('/users', require('./users'));
-// router.use(
-//   '/',
-//   (docData = (req, res) => {
-//     let docData = {
-//       documentationURL: 'https://puppies-api-ek0y.onrender.com/api-docs'
-//     };
-//     res.send(docData);
-//   })
-// );
+router.use(
+  '/',
+  (docData = (req, res) => {
+    let docData = {
+      documentationURL: 'https://puppies-api-ek0y.onrender.com/api-docs'
+    };
+    res.send(docData);
+  })
+);
 
 module.exports = router;
