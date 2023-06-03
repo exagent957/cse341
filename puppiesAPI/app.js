@@ -1,7 +1,7 @@
 /*CSE341 Web Services - Project 2 - Puppies API*/
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const path = require('node:path');
 const mongoSanitize = require('express-mongo-sanitize');
 const morgan = require('morgan');
 const passport = require('passport');
