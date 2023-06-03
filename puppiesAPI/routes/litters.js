@@ -1,4 +1,3 @@
-/*eslint-disable*/
 /**** CSE341 Project 2 Puppies API****/
 const express = require('express');
 const router = express.Router();

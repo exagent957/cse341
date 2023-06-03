@@ -1,13 +1,19 @@
-/*eslint-disable*/
 /***CSE341 Web Services Project 2 Puppies API ***/
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
+router.get('/', (req, res) => {
+  res.render('login', {
+    layout: 'login'
+  });
+});
+
 router.use('/', require('./swagger'));
 router.use('/puppies', require('./puppies'));
 router.use('/litters', require('./litters'));
 router.use('/users', require('./users'));
+router.use('/auth', require('./auth'));
 router.use(
   '/',
   (docData = (req, res) => {
