@@ -2,12 +2,18 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const { ensureAuth, ensureGuest } = require('../controllers/auth');
+
 router.use(bodyParser.json());
-router.get('/', (req, res) => {
+// @desc Login/Landing page
+// @route GET /
+router.get('/', ensureGuest, (req, res) => {
   res.render('login', {
     layout: 'login'
   });
 });
+
+router.get('/api-docs', ensureAuth);
 
 router.use('/', require('./swagger'));
 router.use('/puppies', require('./puppies'));

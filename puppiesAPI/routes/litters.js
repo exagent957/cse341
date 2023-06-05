@@ -3,15 +3,16 @@ const express = require('express');
 const router = express.Router();
 
 const littersController = require('../controllers/litters');
+const { ensureAuth } = require('../controllers/auth');
 
-router.get('/', littersController.getAllLitters);
+router.get('/', ensureAuth, littersController.getAllLitters);
 
-router.get('/:id', littersController.getLitterById);
+router.get('/:id', ensureAuth, littersController.getLitterById);
 
-router.post('/', littersController.addLitter);
+router.post('/', ensureAuth, littersController.addLitter);
 
-router.put('/:id', littersController.updateLitter);
+router.put('/:id', ensureAuth, littersController.updateLitter);
 
-router.delete('/:id', littersController.deleteLitter);
+router.delete('/:id', ensureAuth, littersController.deleteLitter);
 
 module.exports = router;

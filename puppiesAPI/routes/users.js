@@ -3,8 +3,9 @@ const router = express.Router();
 
 const usersController = require('../controllers/users');
 const authController = require('../controllers/authController');
+const { ensureAuth } = require('../controllers/auth');
 
-router.get('/', usersController.getAllUsers);
+router.get('/', ensureAuth, usersController.getAllUsers);
 
 // router.get('/:id', usersController.getUserById);
 

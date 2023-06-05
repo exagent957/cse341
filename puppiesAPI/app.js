@@ -4,10 +4,12 @@ const bodyParser = require('body-parser');
 const path = require('node:path');
 // const https = require('node:https');
 // const fs = require('node:fs');
+const mongoose = require('mongoose');
 const mongoSanitize = require('express-mongo-sanitize');
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const exphbs = require('express-handlebars');
 const xss = require('xss-clean');
 const hpp = require('hpp');
@@ -38,7 +40,8 @@ app.use(
   session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 //Passport middleware
