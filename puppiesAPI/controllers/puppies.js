@@ -1,4 +1,4 @@
-/**** CSE341 Web Services - Project 2 - Puppies API ****//*eslint-disable*/ 
+/**** CSE341 Web Services - Project 2 - Puppies API ****/
 const { application } = require('express');
 const mongoose = require('../db/connect');
 const { json } = require('body-parser');
@@ -24,7 +24,7 @@ const getPuppyById = catchAsync(async (req, res, next) => {
   #swagger.description = 'READ a specific puppy by id.'
 */
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Use a valid id to find desired puppy.')
+    res.status(400).json('Use a valid id to find desired puppy.');
   }
   const puppyId = new ObjectId(req.params.id);
   const puppy = await Puppy.findById(puppyId);
@@ -35,7 +35,7 @@ const getPuppyById = catchAsync(async (req, res, next) => {
 });
 
 const addPuppy = catchAsync(async (req, res, next) => {
-    /*
+  /*
   #swagger.description = 'CREATE a new puppy.'
 */
   if (!req.body.puppyTempName) {
@@ -59,11 +59,11 @@ const addPuppy = catchAsync(async (req, res, next) => {
 });
 
 const updatePuppy = catchAsync(async (req, res) => {
-    /*
+  /*
   #swagger.description = 'UPDATE a specific puppy by id.'
 */
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Use a valid id to update desired puppy.')
+    res.status(400).json('Use a valid id to update desired puppy.');
   }
   const puppyId = new ObjectId(req.params.id);
   const changePuppy = {
@@ -86,11 +86,11 @@ const updatePuppy = catchAsync(async (req, res) => {
 });
 
 const deletePuppy = catchAsync(async (req, res, next) => {
-    /*
+  /*
   #swagger.description = 'DELETE a puppy by id.'
 */
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Use a valid id to delete desired puppy.')
+    res.status(400).json('Use a valid id to delete desired puppy.');
   }
   const puppyId = new ObjectId(req.params.id);
   await Puppy.findByIdAndDelete(puppyId);
@@ -100,10 +100,10 @@ const deletePuppy = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = { 
-  getAllPuppies, 
-  getPuppyById, 
+module.exports = {
+  getAllPuppies,
+  getPuppyById,
   addPuppy,
   updatePuppy,
-  deletePuppy, 
+  deletePuppy
 };

@@ -1,4 +1,3 @@
-/*eslint-disable*/
 const mongoose = require('mongoose');
 mongoose.Schema.Types.String.set('trim', true);
 const litterSchema = new mongoose.Schema({

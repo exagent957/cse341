@@ -1,4 +1,4 @@
-/**** CSE341 Web Services - Project 2 - Puppies API ****//*eslint-disable*/ 
+/**** CSE341 Web Services - Project 2 - Puppies API ****/
 const { application } = require('express');
 const mongoose = require('../db/connect');
 const { json } = require('body-parser');
@@ -24,7 +24,7 @@ const getLitterById = catchAsync(async (req, res, next) => {
   #swagger.description = 'READ a specific litter by id.'
 */
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Use a valid litter id to find desired litter.')
+    res.status(400).json('Use a valid litter id to find desired litter.');
   }
   const litterId = new ObjectId(req.params.id);
   const litter = await Litter.findById(litterId);
@@ -34,9 +34,8 @@ const getLitterById = catchAsync(async (req, res, next) => {
   });
 });
 
-
 const addLitter = catchAsync(async (req, res, next) => {
-    /*
+  /*
   #swagger.description = 'CREATE a new litter.'
 */
   if (!req.body.litterAKC) {
@@ -65,11 +64,11 @@ const addLitter = catchAsync(async (req, res, next) => {
 });
 
 const updateLitter = catchAsync(async (req, res, next) => {
-    /*
+  /*
   #swagger.description = 'UPDATE a specific litter by id.'
 */
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Use a valid litter id to update desired litter.')
+    res.status(400).json('Use a valid litter id to update desired litter.');
   }
   const litterId = new ObjectId(req.params.id);
   const changeLitter = {
@@ -97,11 +96,11 @@ const updateLitter = catchAsync(async (req, res, next) => {
 });
 
 const deleteLitter = catchAsync(async (req, res, next) => {
-    /*
+  /*
   #swagger.description = 'DELETE a specific litter by id.'
 */
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Use a valid litter id to delete desired litter.')
+    res.status(400).json('Use a valid litter id to delete desired litter.');
   }
   const litterId = new ObjectId(req.params.id);
   await Litter.findByIdAndDelete(litterId);
@@ -111,10 +110,10 @@ const deleteLitter = catchAsync(async (req, res, next) => {
   });
 });
 
-module.exports = { 
-  getAllLitters, 
+module.exports = {
+  getAllLitters,
   getLitterById,
-  addLitter, 
-  updateLitter, 
-  deleteLitter 
+  addLitter,
+  updateLitter,
+  deleteLitter
 };

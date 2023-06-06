@@ -2,8 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('node:path');
-// const https = require('node:https');
-// const fs = require('node:fs');
 const mongoose = require('mongoose');
 const mongoSanitize = require('express-mongo-sanitize');
 const morgan = require('morgan');
@@ -73,10 +71,5 @@ app.use(globalErrorHandler);
 
 connect.connectToMongo();
 
-// const options = {
-//   key: fs.readFileSync('./agent2-key.pem'),
-//   cert: fs.readFileSync('./agent2-cert.pem')
-// };
-// https.createServer(app).listen(port);
 app.listen(port);
 console.log(`Listening on ${port}`);
