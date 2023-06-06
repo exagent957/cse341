@@ -22,6 +22,7 @@ const app = express();
 //Passport config
 require('./config/passport')(passport);
 
+app.enable('trust proxy');
 app.use(bodyParser.json());
 
 //Data sanitization. Protect against NoSQL query injection
