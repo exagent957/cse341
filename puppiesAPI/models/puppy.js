@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 mongoose.Schema.Types.String.set('trim', true);
 const puppySchema = new mongoose.Schema({
   puppyTempName: {

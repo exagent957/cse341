@@ -1,8 +1,8 @@
 /**** CSE341 Web Services - Project 2 - Puppies API ****/
 const { application } = require('express');
-const mongoose = require('../db/connect');
 const { json } = require('body-parser');
-const catchAsync = require('./../utils/catchAsync');
+const mongoose = require('../db/connect');
+const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const ObjectId = require('mongodb').ObjectId;
 const Puppy = require('./../models/puppy');
