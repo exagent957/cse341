@@ -1,4 +1,3 @@
-/**** CSE341 Web Services - Project 2 - Puppies API ****/
 const { application } = require('express');
 const { json } = require('body-parser');
 const mongoose = require('../db/connect');
