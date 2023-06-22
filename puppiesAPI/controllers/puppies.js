@@ -4,13 +4,21 @@ const mongoose = require('../db/connect');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const ObjectId = require('mongodb').ObjectId;
+const APIFeatures = require('../utils/apiFeatures');
 const Puppy = require('./../models/puppy');
 
 const getAllPuppies = catchAsync(async (req, res) => {
   /*
   #swagger.description = 'READ all puppies.'
 */
-  const puppies = await Puppy.find();
+
+  const features = new APIFeatures(Puppy.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
+  const puppies = await features.query;
+
   res.status(200).json({
     status: 'success',
     results: puppies.length,

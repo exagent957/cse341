@@ -4,9 +4,9 @@ const router = express.Router();
 const puppiesController = require('../controllers/puppies');
 const { ensureAuth } = require('../controllers/auth');
 
-router.get('/', ensureAuth, puppiesController.getAllPuppies);
+router.get('/', puppiesController.getAllPuppies);
 
-router.get('/:id', ensureAuth, puppiesController.getPuppyById);
+router.get('/:id', puppiesController.getPuppyById);
 
 router.post('/', ensureAuth, puppiesController.addPuppy);
 
