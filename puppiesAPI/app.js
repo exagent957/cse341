@@ -71,5 +71,5 @@ app.use(globalErrorHandler);
 
 connect.connectToMongo();
 
-app.listen(port);
+module.exports = app.listen(port);
 console.log(`Listening on ${port}`);

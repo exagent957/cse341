@@ -6,9 +6,11 @@ const { ensureAuth } = require('../controllers/auth');
 
 router.get('/', puppiesController.getAllPuppies);
 
+router.get('/puppies-stats', puppiesController.getPuppiesStats);
+
 router.get('/:id', puppiesController.getPuppyById);
 
-router.post('/', ensureAuth, puppiesController.addPuppy);
+router.post('/', puppiesController.addPuppy);
 
 router.put('/:id', ensureAuth, puppiesController.updatePuppy);
 

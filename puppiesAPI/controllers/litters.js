@@ -34,6 +34,18 @@ const getLitterById = catchAsync(async (req, res, next) => {
   });
 });
 
+const getLittersStats = catchAsync(async (req, res, next) => {
+  /*
+  #swagger.description = 'GET litters-stats.'
+*/
+  const litters = await Litter.find();
+  res.status(200).json({
+    status: 'success',
+    results: litters.length,
+    data: { litters }
+  });
+});
+
 const addLitter = catchAsync(async (req, res, next) => {
   /*
   #swagger.description = 'CREATE a new litter.'
@@ -113,6 +125,7 @@ const deleteLitter = catchAsync(async (req, res, next) => {
 module.exports = {
   getAllLitters,
   getLitterById,
+  getLittersStats,
   addLitter,
   updateLitter,
   deleteLitter

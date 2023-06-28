@@ -5,9 +5,11 @@ const router = express.Router();
 const littersController = require('../controllers/litters');
 const { ensureAuth } = require('../controllers/auth');
 
-router.get('/', ensureAuth, littersController.getAllLitters);
+router.get('/', littersController.getAllLitters);
 
-router.get('/:id', ensureAuth, littersController.getLitterById);
+router.get('/litters-stats', littersController.getLittersStats);
+
+router.get('/:id', littersController.getLitterById);
 
 router.post('/', ensureAuth, littersController.addLitter);
 

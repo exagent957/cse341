@@ -26,6 +26,33 @@ const getAllPuppies = catchAsync(async (req, res) => {
   });
 });
 
+const getPuppiesStats = catchAsync(async (req, res, next) => {
+  /*
+  #swagger.description = 'GET stats for puppies.'
+*/
+  const stats = await Puppy.aggregate([
+    // {
+    //   $match: { puppyColor: { $eq: 'black' } }
+    // },
+
+    {
+      $group: {
+        _id: { $toUpper: '$puppyColor' },
+        countByColor: { $count: {} }
+        // _id: '$puppySex',
+        // countByGender: { $count: {} }
+      }
+    },
+    {
+      $sort: { countByColor: -1 }
+    }
+  ]);
+  res.status(200).json({
+    status: 'success',
+    data: { stats }
+  });
+});
+
 const getPuppyById = catchAsync(async (req, res, next) => {
   /*
   #swagger.description = 'READ a specific puppy by id.'
@@ -110,6 +137,7 @@ const deletePuppy = catchAsync(async (req, res, next) => {
 module.exports = {
   getAllPuppies,
   getPuppyById,
+  getPuppiesStats,
   addPuppy,
   updatePuppy,
   deletePuppy
