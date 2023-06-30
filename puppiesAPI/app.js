@@ -20,6 +20,13 @@ const app = express();
 //Passport config
 require('./config/passport')(passport);
 
+//Safety net
+process.on('uncaughtException', (err) => {
+  console.log('UNCAUGHT EXCEPTION! Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 app.enable('trust proxy');
 app.use(bodyParser.json());
 
@@ -62,14 +69,23 @@ app
   })
   .use('', require('./routes'));
 
-//Error handling
+//Error handling to catch unhandled routes
 app.all('*', (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl} on this server.`, 404));
 });
-
+// Global error handling middleware
 app.use(globalErrorHandler);
 
 connect.connectToMongo();
 
-module.exports = app.listen(port);
+const server = app.listen(port);
 console.log(`Listening on ${port}`);
+module.exports = server;
+
+process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION! Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});

@@ -62,6 +62,9 @@ const getPuppyById = catchAsync(async (req, res, next) => {
   }
   const puppyId = new ObjectId(req.params.id);
   const puppy = await Puppy.findById(puppyId);
+  if (!puppy) {
+    return next(new AppError('No puppy found with that ID', 404));
+  }
   res.status(200).json({
     status: 'success',
     data: { puppy }
@@ -113,6 +116,9 @@ const updatePuppy = catchAsync(async (req, res) => {
     new: true,
     runValidators: true
   });
+  if (!puppy) {
+    return next(new AppError('No puppy found with that ID', 404));
+  }
   res.status(200).json({
     status: 'success',
     data: { puppy }
@@ -127,7 +133,10 @@ const deletePuppy = catchAsync(async (req, res, next) => {
     res.status(400).json('Use a valid id to delete desired puppy.');
   }
   const puppyId = new ObjectId(req.params.id);
-  await Puppy.findByIdAndDelete(puppyId);
+  const puppy = await Puppy.findByIdAndDelete(puppyId);
+  if (!puppy) {
+    return next(new AppError('No puppy found with that ID', 404));
+  }
   res.status(204).json({
     status: 'success',
     data: null

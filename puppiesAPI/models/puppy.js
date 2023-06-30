@@ -45,7 +45,7 @@ const puppySchema = new mongoose.Schema(
       type: String,
       required: false,
       maxLength: [15, 'Puppy new name must be less than 16 characters'],
-      default: 'Responsibility of new owner.'
+      default: 'TBD by Owner'
     },
     puppyAvailable: {
       type: Boolean,
@@ -95,6 +95,17 @@ puppySchema.pre('aggregate', function (next) {
   next();
 });
 
+//custom validators are possible
+//priceDiscount : {
+// type: Number,
+// validate: {
+//this points to only current doc on New document creation
+//   validator: function(val) {
+//     return val < this.price;
+//   },
+//   message: 'Discount price ({VALUE}) should be less than regular price'
+// }
+// }
 const Puppy = mongoose.model('Puppy', puppySchema);
 
 module.exports = Puppy;
