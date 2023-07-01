@@ -23,7 +23,7 @@ require('./config/passport')(passport);
 //Safety net
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! Shutting down...');
-  console.log(err.name, err.message);
+  console.log(err.name, err.message, err);
   process.exit(1);
 });
 
@@ -59,6 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app
   .use((req, res, next) => {
+    req.requestTime = new Date().toISOString();
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
       'Access-Control-Allow-Headers',
