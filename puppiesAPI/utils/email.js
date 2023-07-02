@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const catchAsync = require('./catchAsync');
 
-const sendEmail = async (options) => {
+const sendEmail = catchAsync(async (options) => {
   //create transporter
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
@@ -23,7 +23,7 @@ const sendEmail = async (options) => {
     text: options.message
   };
   //send the email
-  transporter.sendMail(mailOptions);
-};
+  await transporter.sendMail(mailOptions);
+});
 
 module.exports = sendEmail;
